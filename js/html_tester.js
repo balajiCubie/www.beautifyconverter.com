@@ -1,7 +1,7 @@
 $(document).ready(function(e){ace.require("ace/ext/language_tools");var editorAce1=ace.edit("code1");editorAce1.focus();editorAce1.setOptions({enableBasicAutocompletion:true,enableSnippets:true,enableLiveAutocompletion:true});editorAce1.setTheme("ace/theme/monokai");editorAce1.getSession().setMode("ace/mode/javascript");editorAce1.getSession().setUseWorker(false);var page_height=$(window).height();$('#result').height(page_height-143);$("#wrapmode").click(function(e){e.preventDefault();if(!$(this).is(".wrapon"))
 {$(this).addClass("wrapon");editorAce1.getSession().setUseWrapMode(true);$("#wrapmode").text("Cancel Wrap");}else
 {$(this).removeClass("wrapon");editorAce1.getSession().setUseWrapMode(false);$("#wrapmode").text("Smart Wrap");}});$('#sample_code').click(function(e){e.preventDefault();var str='<html>\r\n'+
-' <header><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css" media="all" /></header>'+
+' <header><link rel="stylesheet" type="text/css" href="https://https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css" media="all" /></header>'+
 '<body style="background-color:#f0f0f0;">\r\n'+
 '<div class="text-center">\r\n'+
 '    <h1>White House</h1>\r\n'+

@@ -110,7 +110,7 @@
     function processFile(blob, fileName) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            PDFJS.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.1.13/pdf.worker.min.js';
+            PDFJS.workerSrc = 'https://https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.1.13/pdf.worker.min.js';
             var pdfAsDataUri = e.target.result;
             var pdfAsArray = convertDataURIToBinary(pdfAsDataUri);
             PDFJS.getDocument(pdfAsArray).then(function (pdf) {
