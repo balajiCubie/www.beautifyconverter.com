@@ -1,0 +1,9 @@
+$("#clear").click(function(e){e.preventDefault();$("#character").val("");$("#character").parents("div.form-group").removeClass("has-error");$("#result").hide();$("html, body").animate({scrollTop:($("html").offset().top-10)},600);});$("#charInfoButton").click(function(e){e.preventDefault();var character=$("#character").val();if(!character){$("#character").parents("div.form-group").addClass("has-error");return;}else{$("html, body").animate({scrollTop:($("#character").offset().top-10)},600);$("#character").parents("div.form-group").removeClass("has-error");$("#result").show();var decimal="";var octal="";var hex="";var hexvalue="";var uniValue="";var escUniValue="";var htmlValue="";for(var i=0;i<character.length;i++){decimal+=character[i].charCodeAt(0)+" ";}
+for(var i=0;i<character.length;i++){octal+=character[i].charCodeAt(0).toString(8)+" ";}
+for(var i=0;i<character.length;i++){hex+=character[i].charCodeAt(0).toString(16)+" ";}
+for(var i=0;i<character.length;i++){hexvalue+="0x"+character[i].charCodeAt(0).toString(16)+" ";}
+for(var i=0;i<character.length;i++){uniValue+="U+"+character[i].charCodeAt(0).toString(16)+" ";}
+for(var i=0;i<character.length;i++){var escUni=""+character[i].charCodeAt(0).toString(16);while(escUni.length<4){escUni="0"+escUni;}
+escUniValue+="\\u"+escUni+" ";}
+for(var i=0;i<character.length;i++){htmlValue+="&#"+character[i].charCodeAt(0).toString(16)+";     ";}
+$("#decValue").text(decimal);$("#octValue").text(octal);$("#hexValue").text(hexvalue);$("#uniValue").text(uniValue);$("#escUniValue").text(escUniValue);$("#htmlValue").text(htmlValue);$("#result,#htmlValue,#decValue,#octValue,#hexValue,#uniValue,#escUniValue").show();}});

@@ -1,0 +1,14 @@
+$("#clear").click(function(e){e.preventDefault();$("#key,#text,#result_ed").val("");$("#key,#text,#result_ed").parents("div.form-group").removeClass("has-error");$("#result_ed").parents("div.form-group").addClass("hide");$("html, body").animate({scrollTop:($("html").offset().top-10)},600);});$("#calculate_hmac").click(function(e){e.preventDefault();data=$.trim($("#text").val());key=$.trim($("#key").val());format=$.trim($("#result_ed").val());if(key=="")
+{$("#key").focus().parents("div.form-group").addClass("has-error");return false;}else
+{$("#key").parents("div.form-group").removeClass("has-error");}
+if(data=="")
+{$("#text").focus().parents("div.form-group").addClass("has-error");return false;}else
+{$("#text").parents("div.form-group").removeClass("has-error");$("#result_ed").parents("div.form-group").removeClass("hide");$("html, body").animate({scrollTop:($("h1").offset().top-10)},600);}
+if(format=="")
+{$("#result_ed").focus().parents("div.form-group").addClass("has-error");return false;}else
+{$("#result_ed").parents("div.form-group").removeClass("has-error");}});function generateHMAC(){var text=$("#text").val();$("#result_ed").val('');if(validateInput("text")){var key=$("#key").val();var alg=$("#alg").val();if(!validateInput("key")){openErrorDialog("Please Enter Key");return false;}
+var output="";switch(alg){case 'aes':output=CryptoJS.AES.encrypt(text,key);break;case 'hmac-md5':output=CryptoJS.HmacMD5(text,key);break;case 'hmac-ripemd160':output=CryptoJS.HmacRIPEMD160(text,key);break;case 'hmac-sha1':output=CryptoJS.HmacSHA1(text,key);break;case 'hmac-sha224':output=CryptoJS.HmacSHA224(text,key);break;case 'hmac-sha256':output=CryptoJS.HmacSHA256(text,key);break;case 'hmac-sha3':output=CryptoJS.HmacSHA3(text,key);break;case 'hmac-sha384':output=CryptoJS.HmacSHA384(text,key);break;case 'hmac-sha512':output=CryptoJS.HmacSHA512(text,key);break;case 'md5':output=CryptoJS.MD5(text);break;case 'ripemd160':output=CryptoJS.RIPEMD160(text);break;case 'sha1':output=CryptoJS.SHA1(text);break;case 'sha224':output=CryptoJS.SHA224(text);break;case 'sha256':output=CryptoJS.SHA256(text);break;case 'sha3':output=CryptoJS.SHA3(text);break;case 'sha384':output=CryptoJS.SHA384(text);break;case 'sha512':output=CryptoJS.SHA512(text);break;case 'pbkdf2':output=CryptoJS.PBKDF2(text,key);break;case 'rabbit-legacy':output=CryptoJS.RabbitLegacy.encrypt(text,key);break;case 'rabbit':output=CryptoJS.Rabbit.encrypt(text,key);break;case 'rc4':output=CryptoJS.RC4Drop.encrypt(text,key);break;case 'tripledes':output=CryptoJS.TripleDES.encrypt(text,key);break;default:break;}
+$("#result_ed").val(output);}
+else{openErrorDialog("Please Enter Plain Text");}}
+function validateInput(fieldName){var flag=true;if($("#"+fieldName).val().trim().length==0){flag=false;}
+return flag;}

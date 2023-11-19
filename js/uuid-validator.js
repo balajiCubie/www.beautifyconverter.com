@@ -1,0 +1,7 @@
+$(document).ready(function(e){$('#dis').hide();$("#clear").click(function(e){e.preventDefault();$("#uuid").val("");$("#uuid").parents("div.form-group").removeClass("has-error");$('#dis').hide();$("html, body").animate({scrollTop:($("html").offset().top-10)},600);});$("#validator").submit(function(e){data=$.trim($("#uuid").val());if(data=="")
+{$("#uuid").focus().parents("div.form-group").addClass("has-error");return false;}else
+{$("#uuid").parents("div.form-group").removeClass("has-error");$("#dis").parents("div.form-group").removeClass("hide");$("html, body").animate({scrollTop:($("h1").offset().top-10)},600);}
+$('#dis').show();var uuid=$("#uuid").val();var pattern=/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i;var status=pattern.test(uuid)?"<span class='text-success'>Valid</span>":"<span class='text-danger'>Not Valid</span>";pattern=/^[0-9A-F]{8}-[0-9A-F]{4}-3[0-9A-F]{3}-[0-9A-F]{4}-[0-9A-F]{12}$/i;if(pattern.test(uuid)){status+=", <b class='text-warning'>"+uuid+"</b> is UUID <b class='text-info'>Version 3</b>.";}
+pattern=/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;if(pattern.test(uuid)){status+=", <b class='text-warning'>"+uuid+"</b> is UUID <b class='text-info'>Version 4</b>.";}
+pattern=/^[0-9A-F]{8}-[0-9A-F]{4}-5[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;if(pattern.test(uuid)){status+=", <b class='text-warning'>"+uuid+"</b> is UUID <b class='text-info'>Version 5</b>.";}
+$("#status").html(status);e.preventDefault();});});
